@@ -5,8 +5,7 @@
 
   For mac with M series chips - go for ARMx64
 
-  Once installed, to confirm, run 
-  `java --version`
+  Once installed, to confirm, run `java --version`
 
   should give the ouput as below, depending on the version installed
   
@@ -16,8 +15,7 @@
   Java HotSpot(TM) 64-Bit Server VM (build 25+37-LTS-3491, mixed mode, sharing)
   ```
 
-  To check the javac version\
-  `javac --version`
+  To check the javac version, run  `javac --version`
 
 # Overview 
   JAVA is a platform independent language. 
