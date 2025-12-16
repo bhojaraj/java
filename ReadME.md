@@ -24,9 +24,13 @@
 
   JVM is platform dependent but not JAVA
 
-  to print something - System.out.print()
+  To print something - System.out.print()
 
-  to print in separate line - System.out.ptintln()
+  To print in separate line - System.out.ptintln()
+
+  To run java file, first compile by running the command `javac Basics/Hello.java`, or else can go to folder Basics in terminal and run `javac Hello.java`
+
+  After compiling, run `java Basics/Hello` or from folder Basics folder `java Hello`
 
 # Variables
   Similar to other programming languages - variables will be used for memory allocation for data processing

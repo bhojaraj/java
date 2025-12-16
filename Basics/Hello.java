@@ -1,7 +1,7 @@
 package Basics;
 class Hello {
 
-  public static void main() {
+  public static void main(String[] args) {
     System.out.println("hello world");
     int num = 8;
     int num2 = 3;

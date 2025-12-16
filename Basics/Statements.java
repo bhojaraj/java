@@ -1,7 +1,7 @@
 package Basics;
 class Statements {
 
-  public static void main() {
+  public static void main(String[] args) {
     int x = 8;
 
     // For single statements, no need of blocks {}
