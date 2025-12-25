@@ -117,3 +117,76 @@ Needed for some repeated operations
 ##### For loop
 
 refer examples for loops here java/Basics/Loops.java
+
+# Main concepts
+
+###### Classes
+Class is what you need to create objects. Class is a user-defined type that describes what an object looks like. Like structure and behavior of the object.
+
+Class is what defines the object and in order to use any method in class, reference variable should be used and assigned with new copy of class and methods can be accessed.
+
+###### Methods
+
+So in the code below, `main` is the method, like beginning of the execution of the class `Demo` 
+
+and `add` is a method in the class Claculator. When add method needs to be called / accessed in Demo class, first it needs to be assigned to a reference variable as an object, then `add` method can be called
+
+```
+class Calculator {
+  public int add() {
+    return 2;
+  }
+}
+
+public class Demo {
+  public static void main(String[] args) {
+  }
+}
+```
+
+Method overloading
+There can be multiple methods with same name but the different number of arguments it expects and different type of argument should be passed
+
+for eg:
+```
+class Calculator {
+  public int add() {
+    return 2;
+  }
+
+  public int add(int n1, int n2) {
+    return n1 + n2;
+  }
+
+  public int add(int n1, int n2, int n3) {
+    return n1 + n2 + n3;
+  }
+
+  public double add (int n1, double n2) {
+    return n1 + n2;
+  }
+}
+```
+
+##### Stack and Heap
+
+```
+class Calculator {
+  int num = 3;
+  public int add(int n1, int n2) {
+    return n1 + n2;
+  }
+}
+
+public class {
+  class static void main(String[] args) {
+    Calculator obj = new Calculator();
+    int newValue = obj.add(2, 3);
+  }
+}
+```
+Here 
+n1, n2 are `local variables` for add method stack memory
+but num is `instance variable` and will be in heap memory
+
+Better visit this for stack and heap - https://youtu.be/_GK3WoFFKUE?si=vNiYZfc65VJoF10K
