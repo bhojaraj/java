@@ -22,6 +22,12 @@ class Computer {
   }
 }
 
+class Student {
+  int rollNo;
+  String name;
+  int marks;
+}
+
 public class Demo {
   public static void main(String[] args) {
     int num1 = 2;
@@ -68,5 +74,70 @@ public class Demo {
     // you can assign the value in each index also
     emptyArray[1] = 3;
 
+    // multi-dimensional arrays
+    int multiNumArray[][] = new int[3][4]; // array of 3 elements which are arrays of length 4
+    int jaggedMultiNumArray[][] = new int[2][]; // jagged array won't have size mentioned
+    // logging array
+    for(int i = 0; i < multiNumArray.length; i++) {
+      for(int j = 0; j < multiNumArray[i].length; j++) {
+        System.out.print(multiNumArray[i][j] + " ");
+      }
+      System.out.println("");
+    }
+
+    // assigning the values to array using Math
+    for(int i = 0; i < multiNumArray.length; i++) {
+      for(int j = 0; j < multiNumArray[i].length; j++) {
+        multiNumArray[i][j] = (int)(Math.random() * 10);
+      }
+    }
+
+    // logging array after assigning
+    for(int i = 0; i < multiNumArray.length; i++) {
+      for(int j = 0; j < multiNumArray[i].length; j++) {
+        System.out.print(multiNumArray[i][j] + " ");
+      }
+      System.out.println("");
+    }
+
+    // logging array by using enhanced for loop
+    for(int n[]: multiNumArray) {
+      for(int m: n) {
+        System.out.print(m + " ");
+      }
+      System.out.println("");
+    }
+
+    // Array of objects
+    Student s1 = new Student();
+    Student s2 = new Student();
+    Student s3 = new Student();
+
+    s1.name = "bharath";
+    s1.rollNo = 1;
+    s1.marks = 90;
+
+    s2.name = "bhoja";
+    s2.rollNo = 2;
+    s2.marks = 91;
+
+    s3.name = "raj";
+    s3.rollNo = 3;
+    s3.marks = 92;
+
+    Student students[] = new Student[3];
+    students[0] = s1;
+    students[1] = s2;
+    students[2] = s3;
+
+    // regular for loop
+    for(int i = 0; i < students.length; i++) {
+      System.out.println(students[i].name);
+    }
+
+    // enhanced for loop
+    for(Student m: students) {
+      System.out.println(m.name + " of roll number " + m.rollNo + " has marks " + m.marks);
+    }
   }
 }

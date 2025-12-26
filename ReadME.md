@@ -120,12 +120,12 @@ refer examples for loops here java/Basics/Loops.java
 
 # Main concepts
 
-###### Classes
+## Classes
 Class is what you need to create objects. Class is a user-defined type that describes what an object looks like. Like structure and behavior of the object.
 
 Class is what defines the object and in order to use any method in class, reference variable should be used and assigned with new copy of class and methods can be accessed.
 
-###### Methods
+## Methods
 
 So in the code below, `main` is the method, like beginning of the execution of the class `Demo` 
 
@@ -168,7 +168,7 @@ class Calculator {
 }
 ```
 
-##### Stack and Heap
+## Stack and Heap
 
 ```
 class Calculator {
@@ -190,3 +190,90 @@ n1, n2 are `local variables` for add method stack memory
 but num is `instance variable` and will be in heap memory
 
 Better visit this for stack and heap - https://youtu.be/_GK3WoFFKUE?si=vNiYZfc65VJoF10K
+
+## Arrays
+```
+int numArray[] = {1, 2, 3, 4};
+int[] emptyArray = {};
+```
+Multi-dimensional array
+```
+int multiNumArray[][] = {numArray, emptyArray};
+```
+
+```
+int multiNumArray[][] = new int[3][4]; // array of 3 elements which are arrays of length 4
+int jaggedMultiNumArray[][] = new int[][]; // jagged array won't have size mentioned or different size for internal arrays
+```
+
+Array of objects
+code eg. is in `/Main/Demo.java`
+
+## Strings
+```
+String name = new String("gowda");
+String name = "bharath";
+```
+Both are same but the second one is read as first one by machine
+
+String is a class unlike other primitive data types in java. This is the reason `String` is mentioned with capital letter `S` everytime string variable is used. And other data types will have small letter.
+
+##### String constant pool
+when there is same string value provided for different variables, strings are saved in heap memory with an address and that address will be referenecd in the variables.
+
+```
+String s1 = "bharath";
+String s2 = "bharath";
+
+s2 = s2 + "gowda";
+```
+Also, when string is modified as above, it is not going to replace the string value in the heap, it will just create a new one with new string value, as in this case, it is "bharath gowda" and the address for new string will be referenced to s2.
+
+And at any point of time "bharath" string is not used anywhere, this will be treated as garbage data and would be cleared from heap memory.
+
+##### Mutable and Immutable
+Mutable strings are strings that can be changed
+Immutable strings are strings that cannot be changed
+
+All strings are Immutable strings.
+
+String buffer and String builder can help in acheiving mutable strings.
+
+##### Static variables
+```
+class Person {
+  String name;
+  int age;
+  static String gender;
+
+  public void show() {
+    System.out.println("name " + name + " age " + age + " gender " + gender);
+  }
+}
+
+public class Demo{
+  public static void main(String[] a) {
+    Person p1 = new Person();
+    p1.name = "bharath";
+    p1.age = 30;
+    p1.gender = "male";
+
+    Person p2 = new Person();
+    p2.name = "soujanya";
+    p2.age = 29;
+    p2.gender = "female";
+
+    p1.show();
+    p2.show();
+
+  }
+}
+```
+
+Here gender will be shown female for both because gender is static variable meaning it is the same variable for the whole class. So changing its value for p1.gender will modify p2.gender as well. In fact, gender should be accessed as `Person.gender` since it is common now. Check the actual code in the file `/Main/DemoStrings.java`
+
+##### Static Methods
+Similar to static variables, static methods will be called pointing from the class since they will be available for the whole class, not in an object.
+
+##### Static blocks
+Similar to static variables and methods, block will be added to declare static variables or methods
