@@ -277,3 +277,73 @@ Similar to static variables, static methods will be called pointing from the cla
 
 ##### Static blocks
 Similar to static variables and methods, block will be added to declare static variables or methods
+
+# Encapuslation
+Part of OOPS. Encapsulation means making the code or variables provate. 
+
+For eg:
+```
+class Person {
+  private String name;
+  private int age;
+}
+// name and age won't be available outside of the class Person
+System.out.println(name + " " + age);
+```
+
+But in order to access the private variables, methods will be used as in the code example in `Main/DemoStrings.java` file under EncapsulationExample class
+
+Methods are also called as Getters and Setters, these can be generated in IDEs by right clicking.
+
+Getters and Setters can be generated using right click in all IDEs, Source Action --> Getters and Setters --> select all the options
+```
+public int getAge() {
+  return age;
+}
+public void setAge(int age) {
+  this.age = age;
+}
+public String getName() {
+  return name;
+}
+public void setName(String name) {
+  this.name = name;
+}
+```
+
+## this
+this keyword referes to the current object. Refer the above code block for example.
+
+## Constructor
+Constructor is a method where assignment or any kind of operations occur. Preferably the name should same as the class.
+
+```
+class Person {
+  private int age;
+  private String name;
+  // constructor
+  public Person() {
+    age = 30;
+    name = "bharath"
+  }
+
+  public static show() {
+    System.out.println()
+  }
+}
+public class Demo {
+  public static void main(String[] a) {
+    Person p1 = new Person();
+    Person p2 = new Person();
+  }
+}
+```
+Constructor would be called twice in this case and assign values to age and name to both objects p1 and p2.
+
+Above is the default Constructor. There is Parameterized constructor too.
+
+##### Ananymous objects
+objects created without reference variables.
+`new Person().show()` will create a new Person object and calls show method.
+
+# Inheritance
