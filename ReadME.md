@@ -347,3 +347,44 @@ objects created without reference variables.
 `new Person().show()` will create a new Person object and calls show method.
 
 # Inheritance
+Need of inheritance - when class A has specific methods or variables and class B has all methods same as class A but also few more. In this case, no need to write the same code twice, class B can extend its definition from class A. 
+
+##### Single level inheritance
+Extending Calc from AdvCalc in `Main/InheritanceAdvCalc.java` - Single level inheritance
+
+##### Multi level inheritance
+Extending AdvCalc from VeryAdvCalc (for example, code is not added), meaning VeryAdvCalc will have all the methods from AdvCalc and also Calc because AdvCalc is extending Calc. This is multi level inheritance.
+
+##### Multiple inheritance
+This is like, class A extends class B and class B extends class C, now class B and class C both have a method of same name, and if that method is called in class A object, it would not know which one to pick from on what basis. In Java, this is not supported. But we can use interfaces or mixins to acheive the similar functionality.
+
+##### This and super method
+super method is always there in the constructor by default even if not mentioned.
+
+code example is in file `Main/InheritanceExample.java` for refernce.
+
+Every class extends `Object` class in java.
+
+##### Method overriding
+Class A and Class B have the same method named `show` and class B extends class A, in this case, when show method is called with object, it would refer the class with which the object is created.
+```
+class A {
+  public void show() {
+    System.out.println("in class A Show method");
+  }
+}
+
+class B extends A {
+  public void show() {
+    System.out.println("in class B Show method");
+  }
+}
+```
+
+example in `Main/InheritanceExample.java`
+
+##### Packages
+package is a mechanism for organizing related classes, interfaces and sub-packages into a structured heirarchy.
+
+##### Access modifiers
+
