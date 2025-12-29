@@ -1,5 +1,6 @@
 package Basics;
 class Statements {
+  int b = 4;
 
   public static void main(String[] args) {
     int x = 8;

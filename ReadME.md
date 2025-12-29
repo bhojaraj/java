@@ -17,7 +17,7 @@
 
   To check the javac version, run  `javac --version`
 
-# Overview 
+# Overview - `Basics/Hello.java`
   JAVA is a platform independent language. 
 
   Installing JDK - JRE will be in JDK and JVM will be in JRE
@@ -100,16 +100,14 @@
 ##### Logical Operators
   &&, ||, !
 
-# Statements (Conditional Statements)
+# Statements (Conditional Statements) - `Basics/Statements.java`
 
 ##### If else statement
 ##### If else if statement
 ##### Ternary operator / statement
 ##### Switch statement
 
-refer examples for considtional statements here java/Basics/Statements.java
-
-# Loops
+# Loops - `Basics/Loops.java`
 Needed for some repeated operations
 
 ##### While loop
@@ -118,15 +116,14 @@ Needed for some repeated operations
 
 refer examples for loops here java/Basics/Loops.java
 
-# Main concepts
+# Main concepts - `Main`
 
-## Classes
+## Classes - `Main/Demo.java`
 Class is what you need to create objects. Class is a user-defined type that describes what an object looks like. Like structure and behavior of the object.
 
 Class is what defines the object and in order to use any method in class, reference variable should be used and assigned with new copy of class and methods can be accessed.
 
 ## Methods
-
 So in the code below, `main` is the method, like beginning of the execution of the class `Demo` 
 
 and `add` is a method in the class Claculator. When add method needs to be called / accessed in Demo class, first it needs to be assigned to a reference variable as an object, then `add` method can be called
@@ -169,7 +166,6 @@ class Calculator {
 ```
 
 ## Stack and Heap
-
 ```
 class Calculator {
   int num = 3;
@@ -209,7 +205,7 @@ int jaggedMultiNumArray[][] = new int[][]; // jagged array won't have size menti
 Array of objects
 code eg. is in `/Main/Demo.java`
 
-## Strings
+## Strings - `Main/DemoStrings.java`
 ```
 String name = new String("gowda");
 String name = "bharath";
@@ -346,7 +342,7 @@ Above is the default Constructor. There is Parameterized constructor too.
 objects created without reference variables.
 `new Person().show()` will create a new Person object and calls show method.
 
-# Inheritance
+# Inheritance - `Main/InheritanceCalc.java`
 Need of inheritance - when class A has specific methods or variables and class B has all methods same as class A but also few more. In this case, no need to write the same code twice, class B can extend its definition from class A. 
 
 ##### Single level inheritance
@@ -387,4 +383,82 @@ example in `Main/InheritanceExample.java`
 package is a mechanism for organizing related classes, interfaces and sub-packages into a structured heirarchy.
 
 ##### Access modifiers
+public - should be in same package and will be accessed anywhere
+private - can be accessed only in the same class irrespective of the package
+default - can only be accessed in the same package
+protected - can be accessed in the same package
 
+int z = 2; // default 
+public int x = 2; // public
+private int y = 3; // private
+protected int m = 3; // protected
+
+##### Polymorphism and Dynamic method dispatch
+poly - many, morphism - behavior
+Compile time polymorphism and Run time polymorphism
+Polymorphism can be defined as the reference variable behaving differently depending on the object that it refers to.
+
+##### final
+for constants, `final` keyword will be used, it means, the value will not be reassigned. Like const in javascript. `final` can be used with variables, methods and classes.
+
+`final int a = 3;` - variable will be considered a constant and not allowed to be reassigned
+
+`final class A {}` - class will not be allowed to extend to another classes
+
+`public final void show() {}` - method will not be allowed to overriding
+
+##### Object class
+As we established earlier that each class extends Object class by default, this Object class has several methods available for use.
+Eg: equals, toString and hasCode
+
+when comparing objects, equals method can be used.
+
+hashCode - gives an hash code in hexa decimal numbers for an object or a variable, etc
+
+Source actions can be used from right click of mouse to generate custom hashCode and equals methods.
+
+##### Upcasting and Downcasting
+examples:
+converting double to int - downcasting
+converting int to double - upcasting
+
+```
+class A {
+  public void show() {
+    System.out.println("A show");
+  }
+}
+
+class B extends A {
+  public void show() {
+    System.out.println("B show");
+  }
+}
+
+public class Demo {
+  public static void main(String[] a) {
+    A a = new A(); // A type and A object
+    a.show(); // default
+
+    A b = new B(); // A type but B object
+    b.show(); // this is upcasting, still works
+
+    // but to make reference object to have B method though it is of object A, it needs to be downcasted as below
+    B c = (A) b; // similar to typecasting or type conversion of int, double
+  }
+}
+```
+
+##### Wrapper class - `Main/DemoWrapper.java`
+Wrapper class is a class wrapped around another class or an object. code example is added for better understanding
+
+##### Abstract keyword
+Abstract is used when a method is declared but not defined. And only abstract class can have abstract methods. Abstract methods will not be allowed to create objects for reference variables.
+
+##### Inner class
+A class can have another class also and it can be static too if needed. Refer the example in the file
+
+##### Ananymous Inner class
+A Inner class without a name is Ananymous inner class.
+
+##### Interfaces - TODO from - https://www.youtube.com/watch?v=A1uqgEz3hB0&list=PLsyeobzWxl7pe_IiTfNyr55kwJPWbgxB5&index=68 

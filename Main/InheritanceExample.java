@@ -1,5 +1,6 @@
 package Main;
 
+import Basics.Loops;
 class SuperExample1 {
   public SuperExample1() {
     super();
@@ -11,9 +12,14 @@ class SuperExample1 {
     System.out.println("SuperExample1 parameterized constructor");
   }
 
+  public void show() {
+    System.out.println("SuperExample1 show");
+  }
+
 }
 
 class SuperExample2 extends SuperExample1 {
+  int a = 3; // access modifiers
   public SuperExample2() {
     super();
     System.out.println("SuperExample2 default constructor");
@@ -23,6 +29,10 @@ class SuperExample2 extends SuperExample1 {
     super(n); // if n is not passed, SuperExample1 default constructor would run always
     // this();
     System.out.println("SuperExample2 parameterized constructor");
+  }
+
+  public void show() {
+    System.out.println("SuperExample2 show");
   }
 }
 
@@ -56,7 +66,31 @@ public class InheritanceExample {
     // instead of super() method, this() method should be used in SuperExample2 parameterized
     // constructor to acheive the above
 
-    // Method overriding
-    
+    // Method overriding - eg added in readme file
+
+    // Access modifiers
+    SuperExample2 s3 = new SuperExample2();
+    System.out.println(s3.a); // can be accessed because it is default when not mentioned anything
+
+    Loops s4 = new Loops();
+    // System.out.println(s4.x); // since default and not in the same package, not accessible
+    System.out.println(s4.y); // available because it is public
+    InheritanceCalc s5 = new InheritanceCalc();
+    System.out.println(s5.z); // since default and in the same package, can access
+    System.out.println(s5.m); // since protected and in the same package, can access
+    // System.out.println(s4.z); // not accessible, z is protected but in the different package
+
+    // Polymorphism
+    SuperExample1 s6 = new SuperExample1();
+    s6.show();
+
+    SuperExample2 s7 = new SuperExample2();
+    s7.show();
+
+    SuperExample1 s8 = new SuperExample2();
+    s8.show();
+
+    // SuperExample2 s9 = new SuperExample1(); // error, parent cannot be converted to child
+
   }
 }

@@ -1,6 +1,9 @@
 package Basics;
 
 public class Loops {
+  int x = 4;
+  public int y = 3;
+  protected int z = 4;
   
   public static void main(String[] args) {
 
