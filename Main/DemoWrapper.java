@@ -33,6 +33,73 @@ class OuterClass {
   }
 }
 
+// interface is like an abstract class without abstract
+interface InterfaceExample {
+  int age = 30;
+  String location = "Bengaluru"; // variable by default, final and static, so should be initialized
+  void showExample(); // public is default for methods, even if not mentioned in interface
+  void display();
+}
+
+class InterfaceClassExample implements InterfaceExample {
+  public void display() {
+    System.out.println("display");
+  }
+  public void showExample() {
+    System.out.println("showExample");
+  }
+}
+
+interface Computer {
+  void code();
+}
+class Laptop implements Computer {
+  public void code() {
+    System.out.println("coding");
+  }
+}
+
+class Desktop implements Computer {
+  public void code() {
+    System.out.println("coding in desktop");
+  }
+}
+class Developer {
+  public void code(Computer com) {
+    com.code();
+  }
+}
+
+enum EnumExample {
+  Running, Walking, Cycling, Swimming
+}
+
+enum Laptops {
+  MacBook(2000), Surface(2800), ThinkPad(1000), ASUS(1800);
+
+  private int price;
+  private Laptops(int p) {
+    this.price = p;
+  }
+  public int getPrice() {
+    return price;
+  }
+  public void setPrice(int price) {
+    this.price = price;
+  }
+}
+
+// functional interface
+@FunctionalInterface
+interface A {
+  void show();
+}
+
+@FunctionalInterface
+interface B {
+  int add(int a, int b);
+}
+
 public class DemoWrapper {
   public static void main(String[] a) {
     int num = 2; 
@@ -83,6 +150,53 @@ public class DemoWrapper {
     };
     myCar2.drive();
 
+    // interface
+    InterfaceClassExample ex = new InterfaceClassExample();
+    ex.display();
+    ex.showExample();
+    int n = InterfaceExample.age;
+    String l = InterfaceExample.location;
+
+    Computer lap = new Laptop();
+    Computer desk = new Desktop();
+    Developer devName = new Developer();
+
+    devName.code(lap);
+    devName.code(desk);
+
+    // enum
+    EnumExample s = EnumExample.Running;
+    System.out.println("s value is " + s);
+    System.out.println(("ss is " + s.ordinal()));
+
+    EnumExample[] ss = EnumExample.values();
+    System.out.println(("ss is " + ss[0]));
+    for (EnumExample i: ss) {
+      System.out.println(i + " " + i.ordinal());
+    }
+
+    Laptops laptop = Laptops.MacBook;
+    System.out.println("laptop is " + laptop + " : " + laptop.getPrice());
+
+    for(Laptops lapo: Laptops.values()) {
+      System.out.println("laptop is " + lapo + " : " + lapo.getPrice());
+    }
+
+    // lambda expression
+    A obj = () -> System.out.println("this is lambda expression"); // this is single line
+    obj.show();
+
+    // if multiple lines are there in method
+    A obj1 = () -> {
+      System.out.println("this is also lambda expression");
+      System.out.println("but with multiple statements in method");
+    };
+    obj1.show();
+
+    // lambda expression with returning some values
+    B obj2 = (i, j) -> i + j; // int and return no need to be mentioned
+    int result = obj2.add(2, 3);
+    System.out.println("result is " + result);
   }
 
 }

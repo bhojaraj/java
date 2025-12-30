@@ -461,4 +461,88 @@ A class can have another class also and it can be static too if needed. Refer th
 ##### Ananymous Inner class
 A Inner class without a name is Ananymous inner class.
 
-##### Interfaces - TODO from - https://www.youtube.com/watch?v=A1uqgEz3hB0&list=PLsyeobzWxl7pe_IiTfNyr55kwJPWbgxB5&index=68 
+##### Interfaces
+Interface is definition of what an object should have or a class should implement. By default methods are public and variables are final & static.
+
+A class can implement multiple interfaces but can't extend multiple classes as we saw earlier.
+And interfaces can extend another interface as classes.
+```
+interface Example1 {
+  void show1();
+}
+interface Example2 {
+  void show2();
+}
+interface Example3 extends Example2 {
+  void show3();
+}
+class A implements Example1, Example2 {
+  public void show1() {
+    System.out.println("show1");
+  }
+  public void show2() {
+    System.out.println("show2");
+  }
+}
+// show2 should also be defined because Example3 is extending Example2 interface
+class B implements Example1, Example3 {
+  public void show1() {
+    System.out.println("show1");
+  };
+  public void show2() {
+    System.out.println("show2");
+  };
+  public void show3() {
+    System.out.println("show3");
+  };
+}
+```
+
+##### enum
+enum is class of constants defined similar to interface.
+
+##### Annotations
+@Override - for overriding the methods in defining classes
+Annotations will be helpful for checking typos or simple mistakes.
+
+##### Types of interfaces
+Normal interface - has 2 or more than 2 methods defined
+Functional (SAM) interface - SAM means Single Abstract Method - has single method defined
+Marker interface - no methods defined or a blank interface
+```
+// functional interface
+@FunctionalInterface
+interface A {
+  void show();
+}
+// normal interface
+interface B {
+  void show1();
+  void show2();
+}
+// Marker interface
+interface C {}
+```
+##### Lambda expression
+Lambda expression can be used only with functional interface. Lambda expression is like arrow function in Javascript.
+```
+@FunctionalInterface
+interface A {
+  void show();
+}
+@FunctionalInterface
+interface B {
+  void show1(int i);
+}
+public class Demo {
+  public static void main(String[] a) {
+    A obj = () -> System.out.println("show method");
+    obj.show();
+
+    B obj2 = i -> System.out.println("show: " + i);
+    obj2.show(3);
+  }
+}
+```
+
+# Exception - https://youtu.be/5r_ERSm7NKE?si=qqXPI93wKoijpJh3
