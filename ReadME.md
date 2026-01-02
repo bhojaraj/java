@@ -545,4 +545,70 @@ public class Demo {
 }
 ```
 
-# Exception - https://youtu.be/5r_ERSm7NKE?si=qqXPI93wKoijpJh3
+# Exception - `Main/Exception.java`
+3 types of errors Compile time errors, Run time errors and Logical errors
+Run time errors and Logical errors can be handled using Exceptions.
+
+Exception handling using try and catch
+```
+try {
+  // actual code
+} catch(ArithmeticException e) {
+  System.out.println("wrong with arithmetic statement on this line");
+} catch(Exception e) {
+  System.out.println("Something went wrong" + e);
+}
+```
+
+can work with multiple catch blocks if there are different exceptions. In this case, parent class Exception should be in the end because it can handle any type of exception and below catch blocks would be redundant or unreachable code
+
+###### Exception heirarchy
+Object --> Throwable --> 1. Exception and 2. Error
+Exception --> Run time exception, SQL exception and IO exception, and etc
+Run time exception --> Arithmetic exception, and etc
+
+All the run time exceptions are called Unchecked exceptions
+SQL exceptions and IO exceptions are called checked exceptions
+
+##### `throw` and `throws` keywords
+```
+try {
+  // do something
+  if (failed) {
+    throw new Exception("throws an exception");
+  }
+} catch (Exception e) {
+  System.out.println("catches an exception");
+}
+```
+
+can use custom excpetions as well
+```
+class MyException extends Exception {
+  public MyException(String str) {
+    super(str);
+  }
+}
+try {
+  // do something
+  throw new MyException("custom exception");
+} catch(MyException e) {
+  System.out.println("catch my custom exception" + e);
+}
+```
+
+##### throws
+mainly used for checked exceptions - called as ducking exception for the behavior
+
+# User inputs and Scanner
+
+`System.out.println();` - in this line, System is a class yes, but println does not belong to System class. println is a method in PrintStream class which actually instantiates an object `out` which is null. PrintStream class actually extends System class.
+
+BufferedReader can be used with InputStreamReader to get the input from user - this was in older versions, Java 1
+
+Better to use Scanner to get input values from user.
+```
+Scanner sc = new Scanner(System.in);
+int num = sc.nextInt();
+System.out.println("num is " + num);
+```
