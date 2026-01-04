@@ -612,3 +612,10 @@ Scanner sc = new Scanner(System.in);
 int num = sc.nextInt();
 System.out.println("num is " + num);
 ```
+
+##### Threads
+Tasks are usually split into small units using these threads. So multiple tasking but using threads each task can be divided into small blocks that needs to be executed. And can run multiple threads at the same time too.
+
+code example is added <
+
+
