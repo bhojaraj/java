@@ -618,4 +618,70 @@ Tasks are usually split into small units using these threads. So multiple taskin
 
 code example is added <
 
+##### Race condition
+Using multiple threads can be inconsistent or may not be appropriate everytime they are running with same code, result can be different. That is how just Threads work, but to make them in synchronised, a keyword synchronise should be used for the method that multiple threads are calling that is actually using the common variable or static variable declared at the top. 
 
+```
+class Counter {
+  int Count;
+  public synchronized void counter() {
+    count++;
+  }
+}
+
+public class Demo {
+  public static void main(String[] a) {
+    Counter c = new Counter();
+
+    Runnable obj1 = () -> {
+      for(int i = 0; i <= 1000; i++) {
+        c.increment();
+      }
+    };
+
+    Runnable obj2 = () -> {
+      for( int i = 0; i <= 1000; i++) {
+        c.increment();
+      }
+    };
+
+    Thread t1 = new Thread(obj1);
+    Thread t2 = new Thread(obj2);
+    t1.start();
+    t2.start();
+
+    // always logs 2000 if synchronized kwyword is added for the method
+    System.out.println("count is finally " + count);
+  }
+}
+```
+##### Thread states
+1. New - start()
+2. Runnable - run() and stop()
+  a. if run() -
+    i. Running - sleep() and wait()
+      * if sleep() or wait() -
+        1. Waiting - notify()
+          i. notify() - Runnable
+    ii. Dead
+  b. if stop() -
+    i. Dead
+
+##### Collections - `Main/CollectionDemo.java`
+Collection API - this is a concept that includes Collection and Collections.
+Collection - interface
+Collections - class
+
+Collection - 3 other interfaces extends Collection interfaces
+List, Queue and Set and these have their own class imlementations as below
+List - ArrayList, LinkedList
+Queue - DeQueue
+Set - HashSet, Linked Hashset
+
+Collection API has Map also
+
+##### Comparator and Comparable
+if aware of which logic to order the elements then it is Comparator.
+if class needs to do sorting on its own, then use Comparable.
+
+#### Stream API - https://youtu.be/B-U-ItdMUVw?si=HfBtjSB9xsv1aBZW
