@@ -1,6 +1,7 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Stream;
 
 class Student {
   int age;
@@ -179,6 +181,31 @@ public class CollectionDemo {
     for (StudentWithComparable student: students3) {
       System.out.println(student.name + ": " + student.age);
     }
+
+    // Stream API
+    List<Integer> numList = Arrays.asList(4, 5, 7, 3, 2, 6);
+    System.out.println("numList " + numList);
+    int sum = 0;
+    for(int n: numList) {
+      if(n % 2 == 0) {
+        n = n * 2;
+        sum = sum + n;
+      }
+    }
+    System.out.println("sum is " + sum);
+
+    // forEach to print all the values in an array
+    // for(int n: numList) {
+    //   System.out.println(n);
+    // };
+    numList.forEach(n -> System.out.println("forEach " + n));
+    // ^ same thing can be acheived using Stream easily
+    Stream<Integer> s1 = numList.stream();
+    // s1.forEach(n -> System.out.println("Stream foreach " + n));
+    // ^ must be commented, because streams are available only once
+    Stream<Integer> s2 = s1.filter(n -> n % 2 == 0);
+    s2.forEach(n -> System.out.println("s2 " + n));
+
 
   }
 }

@@ -5,6 +5,7 @@ public class InheritanceCalc {
   public int x = 2; // public
   private int y = 3; // private
   protected int m = 3; // protected
+  final int n = 3; // final like a constant, can never reassign the value
 
   public int addition(int n1, int n2) {
     return n1 + n2;

@@ -28,9 +28,26 @@
 
   To print in separate line - System.out.ptintln()
 
+  ```
+  public class Hello {
+    public static void main(String[] args) {
+      System.out.println("Hello world");
+    }
+  }
+  ```
+
+  with JAVA 21 and later releases, we can write the same as below, this is only for learning purpose. With complex apps, above syntax is the one that should be used
+  ```
+  void main() {
+    System.out.println("Hello world");
+  }
+  ```
+
   To run java file, first compile by running the command `javac Basics/Hello.java`, or else can go to directory Basics in terminal and run `javac Hello.java`
 
   After compiling, run `java Basics/Hello` or from directory Basics folder `java Hello`
+
+  Or you can compile and run at the same line, works for simple files only, `java Basics/Hello.java`
 
 # Variables
   Similar to other programming languages - variables will be used for memory allocation for data processing
@@ -453,7 +470,7 @@ public class Demo {
 Wrapper class is a class wrapped around another class or an object. code example is added for better understanding
 
 ##### Abstract keyword
-Abstract is used when a method is declared but not defined. And only abstract class can have abstract methods. Abstract methods will not be allowed to create objects for reference variables.
+Abstract is used when a method is declared but not defined. And only abstract class can have abstract methods. Abstract classes will not be allowed to create objects for reference variables.
 
 ##### Inner class
 A class can have another class also and it can be static too if needed. Refer the example in the file
@@ -684,4 +701,51 @@ Collection API has Map also
 if aware of which logic to order the elements then it is Comparator.
 if class needs to do sorting on its own, then use Comparable.
 
-#### Stream API - https://youtu.be/B-U-ItdMUVw?si=HfBtjSB9xsv1aBZW
+#### Stream API
+Stream API / class provides so many in-built methods.
+Stream can only be operated once, if needed, must create another stream.
+
+##### var
+`var` is available in java 8 and above. It can be used to declare variables. It is not allowed to name the class var and only local variables not instance variables.
+
+##### Sealed classes
+Abstract classes are the classe that cannot be implementing an object using it for reference variable.
+Final classes are the classes that cannot be inherited by another class.
+
+Sealed classes are in between these 2 meaning these should be inherited by the classes which are mentioned, for other classes it should not be available and throws an error on doing that.
+
+So as per the below eg, A is a sealed class which only permits B and C subclasses to extend A. But B and C should also have a keyword saying it is `non-sealed` or `sealed` or `final` (preferably final) to ensure sub classes are also extending parent class.
+
+```
+sealed class A permits B, C { // can create an object referencing to this class
+// just in case, A can extend any other class and implement any interface before permitting like below
+// sealed class A extends MyClass implements MyInterface permits B, C
+
+}
+
+non-sealed class B extends A { // non-sealed means it is available for other classes to extend
+
+}
+
+final class C extends A { // final - cannot be extended by other classes
+
+}
+
+class D extends B { // D can extend B as B is non-sealed and available for other classes
+
+}
+
+class E { // E cannot extend A because it is only permitted by B and C
+
+}
+
+public class SealedDemo {
+  public static void main(String[] args) {
+    A a = new A(); // no error, it can be done
+  }
+}
+```
+Same way interfaces can also be sealed and non-sealed but never be final because only class, variable or methods can be final.
+
+##### Record classes
+Record classes are final and private as they cannot extend any other classes and also cannot extended by other class. Because record class extends another record class behind the scenes.
